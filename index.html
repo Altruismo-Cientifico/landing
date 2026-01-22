@@ -1,0 +1,1290 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Altruismo Científico</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-soft: #f8f9fa;
+      --bg-section: #fafbfc;
+      --text: #1a1a1a;
+      --text-muted: #6b7280;
+      --text-light: #9ca3af;
+      --accent-blue: #1e40af;
+      --accent-blue-light: #3b82f6;
+      --accent-green: #047857;
+      --accent-green-light: #10b981;
+      --border: #e5e7eb;
+      --border-light: #f3f4f6;
+      --radius: 12px;
+      --radius-lg: 16px;
+      --shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+      --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      padding: 1rem 0;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-blue);
+    }
+
+    /* Hero Section */
+    .hero {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 6rem 2rem 4rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+
+    .hero .subtitle {
+      font-size: clamp(1.125rem, 2vw, 1.5rem);
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto 3rem;
+      line-height: 1.6;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.875rem 2rem;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-primary {
+      background: var(--accent-blue);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-blue-light);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-secondary {
+      background: var(--bg-soft);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-section);
+      border-color: var(--accent-blue);
+    }
+
+    /* Sections */
+    section {
+      padding: 5rem 2rem;
+    }
+
+    .section-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-header h2 {
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      margin-bottom: 1rem;
+    }
+
+    .section-header p {
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* What is Scientific Altruism */
+    .what-is {
+      background: var(--bg-section);
+    }
+
+    .what-is-content {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.125rem;
+      line-height: 1.8;
+      color: var(--text-muted);
+    }
+
+    .what-is-icons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .icon-card {
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    .icon-card svg {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 1rem;
+      color: var(--accent-blue);
+    }
+
+    .icon-card h3 {
+      font-size: 1.125rem;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    .icon-card p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .ea-reference {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .ea-reference a {
+      color: var(--accent-blue);
+      text-decoration: none;
+    }
+
+    .ea-reference a:hover {
+      text-decoration: underline;
+    }
+
+    /* Initiatives */
+    .initiatives-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .initiative-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      transition: all 0.3s;
+      box-shadow: var(--shadow);
+    }
+
+    .initiative-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--accent-blue);
+    }
+
+    .initiative-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .initiative-card .icon {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 1rem;
+      color: var(--accent-blue);
+    }
+
+    .initiative-card p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .initiative-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tag {
+      padding: 0.375rem 0.75rem;
+      background: var(--bg-soft);
+      border-radius: 999px;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    .initiative-card .btn {
+      font-size: 0.95rem;
+      padding: 0.75rem 1.5rem;
+    }
+
+    /* Areas of Work */
+    .areas {
+      background: var(--bg-section);
+    }
+
+    .areas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .area-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .area-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    .area-card .problem {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .area-card .relevance {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Resources */
+    .resources-filters {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .filter-group label {
+      display: block;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    .filter-group select,
+    .filter-group input {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 0.95rem;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .filter-group select:focus,
+    .filter-group input:focus {
+      outline: none;
+      border-color: var(--accent-blue);
+    }
+
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .resource-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      transition: all 0.2s;
+      box-shadow: var(--shadow);
+    }
+
+    .resource-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--accent-blue);
+    }
+
+    .resource-card h4 {
+      font-size: 1.125rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .resource-card h4 a {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .resource-card h4 a:hover {
+      color: var(--accent-blue);
+    }
+
+    .resource-meta {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+      font-size: 0.875rem;
+    }
+
+    .resource-badge {
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .resource-badge.type {
+      background: var(--accent-blue);
+      color: white;
+    }
+
+    .resource-badge.area {
+      background: var(--bg-soft);
+      color: var(--text-muted);
+    }
+
+    .resource-badge.level {
+      background: var(--accent-green);
+      color: white;
+    }
+
+    .resource-summary {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-bottom: 0.75rem;
+    }
+
+    .resource-details {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+
+    /* Events */
+    .events {
+      background: var(--bg-section);
+    }
+
+    .events-timeline {
+      display: grid;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .event-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 2rem;
+      box-shadow: var(--shadow);
+      transition: all 0.2s;
+    }
+
+    .event-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--accent-blue);
+    }
+
+    .event-date {
+      text-align: center;
+      padding: 1rem;
+      background: var(--bg-soft);
+      border-radius: var(--radius);
+      min-width: 80px;
+    }
+
+    .event-date .day {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent-blue);
+    }
+
+    .event-date .month {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .event-content h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .event-content h3 a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .event-content h3 a:hover {
+      color: var(--accent-blue);
+    }
+
+    .event-content .event-type {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      background: var(--bg-soft);
+      border-radius: 999px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .event-content p {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    /* Coffee Chat */
+    .coffee-chat {
+      background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-blue-light) 100%);
+      color: white;
+      border-radius: var(--radius-lg);
+      padding: 4rem 2rem;
+      text-align: center;
+      margin: 3rem 0;
+    }
+
+    .coffee-chat h2 {
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      margin-bottom: 1rem;
+      color: white;
+    }
+
+    .coffee-chat p {
+      font-size: 1.125rem;
+      margin-bottom: 2rem;
+      opacity: 0.95;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .coffee-chat .btn {
+      background: white;
+      color: var(--accent-blue);
+    }
+
+    .coffee-chat .btn:hover {
+      background: var(--bg-soft);
+      transform: translateY(-1px);
+    }
+
+    /* Community */
+    .community {
+      background: var(--bg-section);
+    }
+
+    .community-content {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .community-invite {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .community-role {
+      padding: 1rem;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .community-form {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin-top: 2rem;
+      text-align: left;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 0.95rem;
+      font-family: inherit;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--accent-blue);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--bg-soft);
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .social-links a:hover {
+      background: var(--accent-blue);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--bg-section);
+      border-top: 1px solid var(--border);
+      padding: 3rem 2rem 2rem;
+      margin-top: 5rem;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 3rem;
+    }
+
+    .footer-section h4 {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-section a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .footer-section a:hover {
+      color: var(--accent-blue);
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 2rem auto 0;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 0.875rem;
+      color: var(--text-light);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      section {
+        padding: 3rem 1.5rem;
+      }
+
+      .hero {
+        padding: 4rem 1.5rem 3rem;
+      }
+
+      .initiatives-grid,
+      .areas-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .resources-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .event-card {
+        grid-template-columns: 1fr;
+      }
+
+      .event-date {
+        min-width: auto;
+      }
+    }
+
+    /* Smooth scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="#" class="logo">Altruismo Científico</a>
+      <ul class="nav-links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#que-es">¿Qué es?</a></li>
+        <li><a href="#iniciativas">Iniciativas</a></li>
+        <li><a href="#areas">Áreas</a></li>
+        <li><a href="#recursos">Recursos</a></li>
+        <li><a href="#eventos">Eventos</a></li>
+        <li><a href="#comunidad">Comunidad</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="inicio" class="hero">
+    <h1>Altruismo Científico</h1>
+    <p class="subtitle">Ciencia, evidencia y comunidad para resolver problemas de alto impacto.</p>
+    <div class="hero-ctas">
+      <a href="#iniciativas" class="btn btn-primary">Explorar iniciativas</a>
+      <a href="#recursos" class="btn btn-secondary">Acceder a recursos</a>
+      <a href="#comunidad" class="btn btn-secondary">Unirse a la comunidad</a>
+    </div>
+  </section>
+
+  <!-- What is Scientific Altruism -->
+  <section id="que-es" class="what-is">
+    <div class="section-container">
+      <div class="section-header">
+        <h2>¿Qué es el altruismo científico?</h2>
+      </div>
+      <div class="what-is-content">
+        <p>El altruismo científico es un marco conceptual que utiliza ciencia, datos y razonamiento riguroso para maximizar el impacto social positivo. A través de la evaluación sistemática de problemas, la aplicación de evidencia empírica y el enfoque en soluciones escalables, buscamos abordar los desafíos más urgentes de nuestro tiempo.</p>
+        
+        <div class="what-is-icons">
+          <div class="icon-card">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <h3>Evidencia</h3>
+            <p>Decisiones basadas en datos y análisis riguroso</p>
+          </div>
+          <div class="icon-card">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+            </svg>
+            <h3>Ciencia aplicada</h3>
+            <p>Metodología científica al servicio del bienestar</p>
+          </div>
+          <div class="icon-card">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+            </svg>
+            <h3>Escalabilidad</h3>
+            <p>Soluciones que pueden crecer y replicarse</p>
+          </div>
+          <div class="icon-card">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+            </svg>
+            <h3>Impacto</h3>
+            <p>Enfoque en resultados medibles y transformadores</p>
+          </div>
+        </div>
+
+        <div class="ea-reference">
+          <p>Este enfoque se inspira en el movimiento de <a href="https://www.effectivealtruism.org" target="_blank" rel="noopener">Effective Altruism</a>, adaptado al contexto mexicano y latinoamericano con un énfasis en la formación universitaria y la investigación aplicada.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Initiatives -->
+  <section id="iniciativas">
+    <div class="section-container">
+      <div class="section-header">
+        <h2>Iniciativas</h2>
+        <p>Dos iniciativas principales que materializan nuestro compromiso con el altruismo científico</p>
+      </div>
+      <div class="initiatives-grid">
+        <div class="initiative-card">
+          <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+          </svg>
+          <h3>EA Universidades México</h3>
+          <div class="initiative-tags">
+            <span class="tag">Formación universitaria</span>
+            <span class="tag">Comunidad</span>
+            <span class="tag">Liderazgo estudiantil</span>
+          </div>
+          <p>Red universitaria que promueve el pensamiento basado en evidencia y la acción efectiva entre estudiantes y académicos. Organizamos eventos, cursos y comunidades locales en universidades de todo México.</p>
+          <a href="https://www.instagram.com/ea_universidades_mexico/" target="_blank" rel="noopener" class="btn btn-primary">Conocer la iniciativa</a>
+        </div>
+        <div class="initiative-card">
+          <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+          </svg>
+          <h3>AI Safety México</h3>
+          <div class="initiative-tags">
+            <span class="tag">Investigación</span>
+            <span class="tag">Gobernanza</span>
+            <span class="tag">Riesgos de IA</span>
+          </div>
+          <p>Línea especializada en seguridad y gobernanza de inteligencia artificial. Fomentamos investigación, formación y políticas públicas para abordar los riesgos y oportunidades de la IA de manera responsable.</p>
+          <a href="https://www.aismx.org/" target="_blank" rel="noopener" class="btn btn-primary">Conocer la iniciativa</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Areas of Work -->
+  <section id="areas" class="areas">
+    <div class="section-container">
+      <div class="section-header">
+        <h2>Áreas de trabajo</h2>
+        <p>Enfoques interdisciplinarios para problemas de alto impacto</p>
+      </div>
+      <div class="areas-grid">
+        <div class="area-card">
+          <h3>AI Safety</h3>
+          <p class="problem">Asegurar que los sistemas de IA avanzados sean seguros, alineados y beneficiosos para la humanidad. Incluye investigación técnica en alineamiento, robustez y monitoreo, así como gobernanza y políticas públicas.</p>
+          <p class="relevance">Relevancia global: Los sistemas de IA cada vez más capaces presentan riesgos existenciales si no se desarrollan con cuidado. La investigación y regulación proactiva son críticas.</p>
+          <a href="#recursos" class="btn btn-secondary">Ver recursos</a>
+        </div>
+        <div class="area-card">
+          <h3>Animal Welfare</h3>
+          <p class="problem">Mejorar el bienestar de los animales, especialmente aquellos en sistemas de producción industrial. Enfoque en reducir el sufrimiento a gran escala mediante cambios sistémicos y alternativas sostenibles.</p>
+          <p class="relevance">Relevancia global: Miles de millones de animales experimentan sufrimiento evitable cada año. Las intervenciones efectivas pueden generar mejoras masivas en bienestar animal.</p>
+          <a href="#recursos" class="btn btn-secondary">Ver recursos</a>
+        </div>
+        <div class="area-card">
+          <h3>Information Security</h3>
+          <p class="problem">Proteger sistemas críticos e información sensible de amenazas cibernéticas. Incluye seguridad de infraestructura crítica, privacidad de datos y resiliencia de sistemas.</p>
+          <p class="relevance">Relevancia global: La dependencia de sistemas digitales crea vulnerabilidades que pueden tener consecuencias catastróficas. La seguridad proactiva es esencial.</p>
+          <a href="#recursos" class="btn btn-secondary">Ver recursos</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resources -->
+  <section id="recursos">
+    <div class="section-container">
+      <div class="section-header">
+        <h2>Recursos</h2>
+        <p>Biblioteca curada de materiales de aprendizaje y oportunidades</p>
+      </div>
+      <div class="resources-filters">
+        <div class="filter-group">
+          <label for="resourceSearch">Buscar</label>
+          <input type="search" id="resourceSearch" placeholder="Buscar por nombre o palabras clave">
+        </div>
+        <div class="filter-group">
+          <label for="resourceArea">Área</label>
+          <select id="resourceArea">
+            <option value="all">Todas las áreas</option>
+            <option value="AI Safety">AI Safety</option>
+            <option value="Animal Welfare">Animal Welfare</option>
+            <option value="Information Security">Information Security</option>
+            <option value="General">General</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="resourceLevel">Nivel</label>
+          <select id="resourceLevel">
+            <option value="all">Todos los niveles</option>
+            <option value="Intro">Intro</option>
+            <option value="Intermedio">Intermedio</option>
+            <option value="Avanzado">Avanzado</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="resourceType">Tipo</label>
+          <select id="resourceType">
+            <option value="all">Todos los tipos</option>
+            <option value="Course / Bootcamp">Curso / Bootcamp</option>
+            <option value="Fellowship">Fellowship</option>
+            <option value="Research agenda">Agenda de investigación</option>
+            <option value="Meta resource">Recurso meta</option>
+            <option value="Opportunities">Oportunidades</option>
+          </select>
+        </div>
+      </div>
+      <div class="resources-grid" id="resourcesGrid"></div>
+    </div>
+  </section>
+
+  <!-- Events -->
+  <section id="eventos" class="events">
+    <div class="section-container">
+      <div class="section-header">
+        <h2>Eventos</h2>
+        <p>Charlas, cursos, workshops y encuentros comunitarios</p>
+      </div>
+      <div class="events-timeline" id="eventsTimeline"></div>
+    </div>
+  </section>
+
+  <!-- Coffee Chat -->
+  <section>
+    <div class="section-container">
+      <div class="coffee-chat">
+        <h2>Coffee Chat de Altruismo Científico</h2>
+        <p>Primer sábado de cada mes. Un espacio abierto e informal para conectar, compartir ideas y construir comunidad. Modalidad virtual e híbrida.</p>
+        <a href="#comunidad" class="btn">Regístrate</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Community -->
+  <section id="comunidad" class="community">
+    <div class="section-container">
+      <div class="section-header">
+        <h2>Comunidad</h2>
+        <p>Únete a una red de personas comprometidas con el impacto positivo</p>
+      </div>
+      <div class="community-content">
+        <p style="color: var(--text-muted); margin-bottom: 2rem;">Invitamos a participar a:</p>
+        <div class="community-invite">
+          <div class="community-role">Estudiantes</div>
+          <div class="community-role">Profesores</div>
+          <div class="community-role">Investigadores</div>
+          <div class="community-role">Organizadores</div>
+        </div>
+        <div class="community-form">
+          <form id="communityForm">
+            <div class="form-group">
+              <label for="name">Nombre completo</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Correo electrónico</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="role">Rol / Interés principal</label>
+              <select id="role" name="role" required>
+                <option value="">Selecciona una opción</option>
+                <option value="student">Estudiante</option>
+                <option value="professor">Profesor</option>
+                <option value="researcher">Investigador</option>
+                <option value="organizer">Organizador</option>
+                <option value="other">Otro</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="interest">Área de interés</label>
+              <select id="interest" name="interest">
+                <option value="">Selecciona una opción</option>
+                <option value="ai-safety">AI Safety</option>
+                <option value="animal-welfare">Animal Welfare</option>
+                <option value="info-security">Information Security</option>
+                <option value="general">General</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Mensaje (opcional)</label>
+              <textarea id="message" name="message" placeholder="Cuéntanos sobre ti y cómo te gustaría participar..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar</button>
+          </form>
+        </div>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/ea-universidades-m%C3%A9xico-118632370/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.026-3.037-1.852-3.037-1.853 0-2.136 1.447-2.136 2.94v5.666H9.351V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.368-1.85 3.6 0 4.268 2.37 4.268 5.455v6.286zM5.337 7.433a2.063 2.063 0 1 1 0-4.126 2.063 2.063 0 0 1 0 4.126zM7.114 20.452H3.56V9h3.554v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#que-es">¿Qué es?</a></li>
+          <li><a href="#iniciativas">Iniciativas</a></li>
+          <li><a href="#areas">Áreas</a></li>
+          <li><a href="#recursos">Recursos</a></li>
+          <li><a href="#eventos">Eventos</a></li>
+          <li><a href="#comunidad">Comunidad</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Iniciativas</h4>
+        <ul>
+          <li><a href="#iniciativas">EA Universidades México</a></li>
+          <li><a href="#iniciativas">AI Safety México</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Recursos externos</h4>
+        <ul>
+          <li><a href="https://www.effectivealtruism.org" target="_blank" rel="noopener">Effective Altruism</a></li>
+          <li><a href="https://aisafety.com" target="_blank" rel="noopener">AI Safety Resources</a></li>
+          <li><a href="https://80000hours.org" target="_blank" rel="noopener">80,000 Hours</a></li>
+          <li><a href="https://www.governance.ai" target="_blank" rel="noopener">GovAI</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="#comunidad">Únete a la comunidad</a></li>
+          <li><a href="https://www.linkedin.com/in/ea-universidades-m%C3%A9xico-118632370/" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Altruismo Científico © 2026. Sitio web de la plataforma paraguas para iniciativas basadas en evidencia.</p>
+      <p style="margin-top: 0.5rem; font-size: 0.8rem;">Este sitio es independiente y no está afiliado oficialmente a ninguna institución académica específica.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Resources data
+    const resources = [
+      { title: "AISafety.com", type: "Meta resource", area: "AI Safety", format: "Online", duration: "Self-paced", level: "Intro", summary: "Hub para organizaciones, fellowships, eventos, entrenamiento y un mapa interactivo.", tags: ["map", "hub", "reference"], link: "https://aisafety.com" },
+      { title: "BlueDot Impact", type: "Course / Bootcamp", area: "AI Safety", format: "Online", duration: "2h a 5 semanas", level: "Intro", summary: "Tracks introductorios y profundos sobre estrategia AGI, bioseguridad, gobernanza y seguridad técnica.", tags: ["course", "cohort"], link: "https://www.bluedotimpact.org/courses" },
+      { title: "ARENA (Alignment Research Engineer Accelerator)", type: "Course / Bootcamp", area: "AI Safety", format: "Presencial Londres", duration: "4-5 semanas", level: "Avanzado", summary: "Bootcamp inmersivo para pasar de programador fuerte a ingeniero de alineamiento.", tags: ["bootcamp", "transformers"], link: "https://www.arena.education" },
+      { title: "CAIS ML Safety Course", type: "Course / Bootcamp", area: "AI Safety", format: "Online", duration: "8 semanas", level: "Intermedio", summary: "Currículo estructurado sobre robustez, monitoreo, alineamiento y seguridad de sistemas ML.", tags: ["course", "robustness"], link: "https://course.mlsafety.org" },
+      { title: "ML4Good Bootcamps", type: "Course / Bootcamp", area: "AI Safety", format: "Presencial", duration: "10 días", level: "Intermedio", summary: "Bootcamp intensivo con proyecto final más sesiones técnicas/de gobernanza.", tags: ["bootcamp", "capstone"], link: "https://ml4good.org" },
+      { title: "Core ML path", type: "Learning path", area: "AI Safety", format: "Online", duration: "Self-paced", level: "Intermedio", summary: "Stanford ML, conferencias CMU, CV (UMich), NLP (Stanford), RL (Stanford/Berkeley).", tags: ["ml", "fundamentals"], link: "https://online.stanford.edu/courses/sohs-ymachlearn-machine-learning" },
+      { title: "Foundational Challenges LLM Safety", type: "Research agenda", area: "AI Safety", format: "Lectura", duration: "Shovel-ready", level: "Avanzado", summary: "Desafíos clave para alinear y asegurar modelos de lenguaje grandes.", tags: ["agenda", "llm"], link: "https://arxiv.org/abs/2402.15471" },
+      { title: "Open Problems in Mechanistic Interpretability", type: "Research agenda", area: "AI Safety", format: "Lectura", duration: "Shovel-ready", level: "Avanzado", summary: "Problemas abiertos para avanzar en interpretabilidad mecanicista.", tags: ["agenda", "interpretability"], link: "https://www.alignmentforum.org/posts/oqYSgo4pJrvw7wFq7/open-problems-in-mechanistic-interpretability" },
+      { title: "AI Governance Ideas 2024", type: "Research agenda", area: "AI Safety", format: "Lectura", duration: "Shovel-ready", level: "Intermedio", summary: "Colección de ideas de investigación en gobernanza de IA.", tags: ["policy", "ideas"], link: "https://www.governance.ai/research-ideas" },
+      { title: "Open Problems in Technical AI Governance", type: "Research agenda", area: "AI Safety", format: "Lectura", duration: "Shovel-ready", level: "Avanzado", summary: "Problemas abiertos y proyectos concretos en evaluaciones y gobernanza técnica.", tags: ["evals", "governance"], link: "https://evals.alignment.org/open-problems" },
+      { title: "MATS", type: "Fellowship", area: "AI Safety", format: "Berkeley + remoto", duration: "10 semanas", level: "Avanzado", summary: "Investigación guiada en alineamiento/interpretabilidad; estipendios disponibles.", tags: ["mentorship", "research"], link: "https://www.matsprogram.org" },
+      { title: "Pivotal Research Fellowship", type: "Fellowship", area: "AI Safety", format: "Londres", duration: "9 semanas", level: "Intermedio", summary: "Proyectos de tiempo completo en safety, gobernanza o bioseguridad con apoyo logístico.", tags: ["biosecurity", "cohort"], link: "https://www.lisa.ai/fellowships" },
+      { title: "SPAR", type: "Fellowship", area: "AI Safety", format: "Remoto", duration: "3 meses (part-time)", level: "Intermedio", summary: "Programa de investigación remoto part-time emparejando talento emergente con expertos.", tags: ["mentorship", "remote", "research"], link: "https://sparai.org" },
+      { title: "80,000 Hours Job Board", type: "Opportunities", area: "General", format: "Online", duration: "Ongoing", level: "Intro", summary: "Vacantes de alto impacto más asesoría 1:1 y recursos de capital profesional.", tags: ["jobs", "advising"], link: "https://80000hours.org/job-board/" },
+      { title: "Fellowship Masterlist", type: "Opportunities", area: "General", format: "Online", duration: "Catálogo", level: "Intro", summary: "Lista maestra de fellowships en AI safety, tech policy y ciberseguridad.", tags: ["catalog", "fellowships"], link: "https://aisafety.training/fellowships" },
+      { title: "AI Safety Training (calendar)", type: "Meta resource", area: "AI Safety", format: "Online", duration: "Timeline", level: "Intro", summary: "Compilación de programas de capacitación con fechas y aplicaciones.", tags: ["calendar", "programs"], link: "https://aisafety.training" },
+      { title: "Core newsletters", type: "Meta resource", area: "General", format: "Email", duration: "Mensual/Semanal", level: "Intro", summary: "AI Safety Newsletter, Impact AI, Transformer, Don't Worry About the Vase, EU AI Act, AI Lab Watch.", tags: ["newsletter", "updates"], link: "https://mailchi.mp/safe.ai/newsletter-signup" },
+      { title: "Local groups & quick wins", type: "Community", area: "AI Safety", format: "Híbrido", duration: "Ongoing", level: "Intro", summary: "Guía para iniciar grupos AIS/EA, actividades, charlas y apoyo inicial.", tags: ["community", "group"], link: "https://aisafety.community" },
+      { title: "Alignment.dev (volunteering)", type: "Volunteering", area: "AI Safety", format: "Remoto", duration: "Ongoing", level: "Intermedio", summary: "Proyectos abiertos para fortalecer el ecosistema de alineamiento.", tags: ["volunteer", "open"], link: "https://alignment.dev" }
+    ];
+
+    // Events data
+    const events = [
+      { 
+        title: "EAGxCDMX 2026", 
+        type: "Conferencia", 
+        date: "2026-03-20", 
+        endDate: "2026-03-22",
+        description: "Conferencia de Effective Altruism en Ciudad de México. La comunidad de altruismo eficaz se reunirá en la capital de México por cuarto año consecutivo. Incluye charlas, talleres, networking y actividades sociales. Aplica antes del 2 de marzo.", 
+        location: "Universum - Museo de las Ciencias, Ciudad de México",
+        link: "https://www.effectivealtruism.org/ea-global/events/eagxcdmx-2026",
+        applicationDeadline: "2026-03-02"
+      },
+      { 
+        title: "Curso Introductorio al Altruismo Eficaz", 
+        type: "Curso", 
+        date: "2026-02-07", 
+        endDate: "2026-03-07",
+        description: "Curso introductorio para conocer los fundamentos del altruismo eficaz y cómo aplicar sus principios en tu carrera y vida.", 
+        location: "Online",
+        link: "https://docs.google.com/forms/d/e/1FAIpQLSd1qE2LuJ0Rv2ZpCCGq7aEFu_tsnPMQZVVIZkQB7jxoGHikJA/viewform?usp=sharing&ouid=117313614373236235521"
+      },
+      { 
+        title: "AI Safety Atlas Fundamentals", 
+        type: "Curso", 
+        date: "2026-02-01", 
+        description: "Curso de fundamentos de AI Safety completamente en español. Exploraremos conceptos clave: capacidades, riesgos, estrategias y gobernanza. Facilitado por Angel Tenorio Vazquez de AI Safety México, en colaboración con Osmani Redondo de AI Safety Madrid. Aplicaciones abiertas.", 
+        location: "Online",
+        link: "https://airtable.com/appZR9Ries3akemlk/pagVA2W08JQ6W77bi/form",
+        note: "Formato: Online | Idioma: Español | Comunidad: AI Safety Madrid"
+      },
+      { 
+        title: "Coffee Chat Mensual", 
+        type: "Comunidad", 
+        date: "2026-02-07", 
+        description: "Primer sábado de cada mes. Espacio abierto e informal para conectar y compartir ideas sobre altruismo científico. Próxima sesión: primer sábado de cada mes.", 
+        location: "Virtual/Híbrido",
+        recurring: true
+      }
+    ];
+
+    // Render resources
+    function renderResources() {
+      const grid = document.getElementById("resourcesGrid");
+      const search = document.getElementById("resourceSearch").value.toLowerCase();
+      const area = document.getElementById("resourceArea").value;
+      const level = document.getElementById("resourceLevel").value;
+      const type = document.getElementById("resourceType").value;
+
+      const filtered = resources.filter(r => {
+        const matchesSearch = search === "" || 
+          [r.title, r.summary, r.tags.join(" "), r.type, r.area].some(field => 
+            field.toLowerCase().includes(search));
+        const matchesArea = area === "all" || r.area === area;
+        const matchesLevel = level === "all" || r.level === level;
+        const matchesType = type === "all" || r.type === type;
+        return matchesSearch && matchesArea && matchesLevel && matchesType;
+      });
+
+      grid.innerHTML = "";
+      filtered.forEach(r => {
+        const card = document.createElement("div");
+        card.className = "resource-card";
+        const titleHtml = r.link
+          ? `<h4><a href="${r.link}" target="_blank" rel="noopener">${r.title}</a></h4>`
+          : `<h4>${r.title}</h4>`;
+        card.innerHTML = `
+          <div class="resource-meta">
+            <span class="resource-badge type">${r.type}</span>
+            <span class="resource-badge area">${r.area}</span>
+            <span class="resource-badge level">${r.level}</span>
+          </div>
+          ${titleHtml}
+          <p class="resource-summary">${r.summary}</p>
+          <div class="resource-details">
+            <span>Formato: <strong>${r.format}</strong></span>
+            <span>Duración: <strong>${r.duration}</strong></span>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // Render events
+    function renderEvents() {
+      const timeline = document.getElementById("eventsTimeline");
+      const now = new Date();
+      const upcoming = events.filter(e => new Date(e.date) >= now).sort((a, b) => 
+        new Date(a.date) - new Date(b.date));
+      const past = events.filter(e => new Date(e.date) < now).sort((a, b) => 
+        new Date(b.date) - new Date(a.date));
+
+      timeline.innerHTML = "";
+
+      if (upcoming.length > 0) {
+        const upcomingSection = document.createElement("div");
+        upcomingSection.innerHTML = `<h3 style="margin-bottom: 1.5rem; color: var(--text-muted); font-size: 1.125rem;">Próximos eventos</h3>`;
+        timeline.appendChild(upcomingSection);
+        upcoming.forEach(e => {
+          timeline.appendChild(createEventCard(e));
+        });
+      }
+
+      if (past.length > 0) {
+        const pastSection = document.createElement("div");
+        pastSection.innerHTML = `<h3 style="margin-top: 3rem; margin-bottom: 1.5rem; color: var(--text-muted); font-size: 1.125rem;">Eventos pasados</h3>`;
+        timeline.appendChild(pastSection);
+        past.slice(0, 3).forEach(e => {
+          timeline.appendChild(createEventCard(e));
+        });
+      }
+    }
+
+    function createEventCard(event) {
+      const card = document.createElement("div");
+      card.className = "event-card";
+      const date = new Date(event.date);
+      const months = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
+      
+      let dateDisplay = `${date.getDate()} ${months[date.getMonth()]}`;
+      if (event.endDate) {
+        const endDate = new Date(event.endDate);
+        if (endDate.getMonth() === date.getMonth()) {
+          dateDisplay = `${date.getDate()}-${endDate.getDate()} ${months[date.getMonth()]}`;
+        } else {
+          dateDisplay = `${date.getDate()} ${months[date.getMonth()]} - ${endDate.getDate()} ${months[endDate.getMonth()]}`;
+        }
+      }
+      
+      let titleHtml = `<h3>${event.title}</h3>`;
+      if (event.link) {
+        titleHtml = `<h3><a href="${event.link}" target="_blank" rel="noopener" style="color: var(--text); text-decoration: none;">${event.title}</a></h3>`;
+      }
+      
+      let additionalInfo = "";
+      if (event.applicationDeadline) {
+        const deadline = new Date(event.applicationDeadline);
+        additionalInfo += `<div style="color: var(--accent-blue); font-size: 0.875rem; font-weight: 600; margin-top: 0.5rem;">📅 Aplica antes del ${deadline.getDate()} ${months[deadline.getMonth()]}</div>`;
+      }
+      if (event.note) {
+        additionalInfo += `<div style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem; font-style: italic;">${event.note}</div>`;
+      }
+      if (event.recurring) {
+        additionalInfo += `<div style="color: var(--accent-green); font-size: 0.875rem; margin-top: 0.5rem;">🔄 Evento recurrente</div>`;
+      }
+      
+      card.innerHTML = `
+        <div class="event-date">
+          <div class="day">${date.getDate()}</div>
+          <div class="month">${months[date.getMonth()]}</div>
+          ${event.endDate ? `<div class="month" style="margin-top: 0.25rem; font-size: 0.75rem;">- ${new Date(event.endDate).getDate()}</div>` : ''}
+        </div>
+        <div class="event-content">
+          <span class="event-type">${event.type}</span>
+          ${titleHtml}
+          <p>${event.description}</p>
+          <div style="color: var(--text-light); font-size: 0.875rem; margin-top: 0.5rem;">📍 ${event.location}</div>
+          ${additionalInfo}
+          ${event.link ? `<a href="${event.link}" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top: 1rem; display: inline-block;">${event.type === 'Conferencia' ? 'Aplicar' : 'Más información'}</a>` : ''}
+        </div>
+      `;
+      return card;
+    }
+
+    // Event listeners
+    document.getElementById("resourceSearch").addEventListener("input", renderResources);
+    document.getElementById("resourceArea").addEventListener("change", renderResources);
+    document.getElementById("resourceLevel").addEventListener("change", renderResources);
+    document.getElementById("resourceType").addEventListener("change", renderResources);
+
+    // Community form
+    document.getElementById("communityForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("¡Gracias por tu interés! Te contactaremos pronto.");
+      this.reset();
+    });
+
+    // Initialize
+    renderResources();
+    renderEvents();
+  </script>
+</body>
+</html>
