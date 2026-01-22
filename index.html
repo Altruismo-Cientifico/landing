@@ -1193,11 +1193,31 @@
     // Render events
     function renderEvents() {
       const timeline = document.getElementById("eventsTimeline");
-      const now = new Date();
-      const upcoming = events.filter(e => new Date(e.date) >= now).sort((a, b) => 
-        new Date(a.date) - new Date(b.date));
-      const past = events.filter(e => new Date(e.date) < now).sort((a, b) => 
-        new Date(b.date) - new Date(a.date));
+      // Usar fecha de referencia: 22 de enero de 2026
+      // Usar fecha de referencia: 22 de enero de 2026
+      const now = new Date(2026, 0, 22); // Enero es mes 0
+      const upcoming = events.filter(e => {
+        const dateParts = e.date.split("-");
+        const eventDate = new Date(parseInt(dateParts[0]), parseInt(dateParts[1]) - 1, parseInt(dateParts[2]));
+        return eventDate >= now;
+      }).sort((a, b) => {
+        const aParts = a.date.split("-");
+        const bParts = b.date.split("-");
+        const aDate = new Date(parseInt(aParts[0]), parseInt(aParts[1]) - 1, parseInt(aParts[2]));
+        const bDate = new Date(parseInt(bParts[0]), parseInt(bParts[1]) - 1, parseInt(bParts[2]));
+        return aDate - bDate;
+      });
+      const past = events.filter(e => {
+        const dateParts = e.date.split("-");
+        const eventDate = new Date(parseInt(dateParts[0]), parseInt(dateParts[1]) - 1, parseInt(dateParts[2]));
+        return eventDate < now;
+      }).sort((a, b) => {
+        const aParts = a.date.split("-");
+        const bParts = b.date.split("-");
+        const aDate = new Date(parseInt(aParts[0]), parseInt(aParts[1]) - 1, parseInt(aParts[2]));
+        const bDate = new Date(parseInt(bParts[0]), parseInt(bParts[1]) - 1, parseInt(bParts[2]));
+        return bDate - aDate;
+      });
 
       timeline.innerHTML = "";
 
@@ -1223,12 +1243,15 @@
     function createEventCard(event) {
       const card = document.createElement("div");
       card.className = "event-card";
-      const date = new Date(event.date);
+      // Parsear fecha correctamente para evitar problemas de zona horaria
+      const dateParts = event.date.split("-");
+      const date = new Date(parseInt(dateParts[0]), parseInt(dateParts[1]) - 1, parseInt(dateParts[2]));
       const months = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
       
       let dateDisplay = `${date.getDate()} ${months[date.getMonth()]}`;
       if (event.endDate) {
-        const endDate = new Date(event.endDate);
+        const endDateParts = event.endDate.split("-");
+        const endDate = new Date(parseInt(endDateParts[0]), parseInt(endDateParts[1]) - 1, parseInt(endDateParts[2]));
         if (endDate.getMonth() === date.getMonth()) {
           dateDisplay = `${date.getDate()}-${endDate.getDate()} ${months[date.getMonth()]}`;
         } else {
@@ -1243,7 +1266,8 @@
       
       let additionalInfo = "";
       if (event.applicationDeadline) {
-        const deadline = new Date(event.applicationDeadline);
+        const deadlineParts = event.applicationDeadline.split("-");
+        const deadline = new Date(parseInt(deadlineParts[0]), parseInt(deadlineParts[1]) - 1, parseInt(deadlineParts[2]));
         additionalInfo += `<div style="color: var(--accent-blue); font-size: 0.875rem; font-weight: 600; margin-top: 0.5rem;">📅 Aplica antes del ${deadline.getDate()} ${months[deadline.getMonth()]}</div>`;
       }
       if (event.note) {
@@ -1257,7 +1281,11 @@
         <div class="event-date">
           <div class="day">${date.getDate()}</div>
           <div class="month">${months[date.getMonth()]}</div>
-          ${event.endDate ? `<div class="month" style="margin-top: 0.25rem; font-size: 0.75rem;">- ${new Date(event.endDate).getDate()}</div>` : ''}
+          ${event.endDate ? (() => {
+            const endDateParts = event.endDate.split("-");
+            const endDate = new Date(parseInt(endDateParts[0]), parseInt(endDateParts[1]) - 1, parseInt(endDateParts[2]));
+            return `<div class="month" style="margin-top: 0.25rem; font-size: 0.75rem;">- ${endDate.getDate()}</div>`;
+          })() : ''}
           </div>
         <div class="event-content">
           <span class="event-type">${event.type}</span>
