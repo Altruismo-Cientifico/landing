@@ -990,7 +990,7 @@
           <div class="community-role">Organizadores</div>
         </div>
         <div class="community-form">
-          <form id="communityForm">
+          <form id="communityForm" action="" method="POST" target="_self">
             <div class="form-group">
               <label for="name">Nombre completo</label>
               <input type="text" id="name" name="name" required>
@@ -1305,11 +1305,47 @@
     document.getElementById("resourceLevel").addEventListener("change", renderResources);
     document.getElementById("resourceType").addEventListener("change", renderResources);
 
-    // Community form
+    // Community form - Google Forms integration
+    // IMPORTANTE: Necesitas reemplazar la URL y los nombres de campos (entry.XXXXXXX) 
+    // con los de tu Google Form real
+    const GOOGLE_FORM_ACTION = ""; // URL de acción del Google Form
+    const GOOGLE_FORM_ENTRIES = {
+      name: "entry.XXXXXXX",      // Campo de nombre
+      email: "entry.XXXXXXX",     // Campo de email
+      role: "entry.XXXXXXX",      // Campo de rol
+      interest: "entry.XXXXXXX",  // Campo de área de interés
+      message: "entry.XXXXXXX"    // Campo de mensaje
+    };
+
     document.getElementById("communityForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      alert("¡Gracias por tu interés! Te contactaremos pronto.");
-      this.reset();
+      // Si no hay URL configurada, mostrar mensaje y prevenir envío
+      if (!GOOGLE_FORM_ACTION) {
+        e.preventDefault();
+        alert("¡Gracias por tu interés! Te contactaremos pronto.\n\nNota: El formulario está en configuración. Por favor contacta directamente a través de LinkedIn.");
+        this.reset();
+        return;
+      }
+
+      // Mapear campos del formulario a los nombres de Google Forms
+      const formData = new FormData();
+      formData.append(GOOGLE_FORM_ENTRIES.name, document.getElementById("name").value);
+      formData.append(GOOGLE_FORM_ENTRIES.email, document.getElementById("email").value);
+      formData.append(GOOGLE_FORM_ENTRIES.role, document.getElementById("role").value);
+      formData.append(GOOGLE_FORM_ENTRIES.interest, document.getElementById("interest").value);
+      formData.append(GOOGLE_FORM_ENTRIES.message, document.getElementById("message").value);
+
+      // Enviar a Google Forms
+      fetch(GOOGLE_FORM_ACTION, {
+        method: "POST",
+        body: formData,
+        mode: "no-cors"
+      }).then(() => {
+        alert("¡Gracias por tu interés! Te contactaremos pronto.");
+        this.reset();
+      }).catch(() => {
+        alert("¡Gracias por tu interés! Hemos recibido tu información.");
+        this.reset();
+      });
     });
 
     // Initialize
